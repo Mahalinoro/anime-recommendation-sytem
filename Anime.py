@@ -1,5 +1,5 @@
 class Anime:
-    def __init__(self, title, type, genre, episodeNumber, episodeDuration, airedFrom, airing, rating, score, scoredBy, popularity, favorites, background, imageURL):
+    def __init__(self, title, type, genre, episodeNumber, episodeDuration, airedFrom, airing, rating, score, scoredBy, rank, popularity, members, favorites, background):
         self.title = title
         self.type = type
         self.genre = genre
@@ -10,13 +10,15 @@ class Anime:
         self.rating = rating
         self.score = score
         self.scoredBy = scoredBy
+        self.rank = rank
         self.popularity = popularity
         self.favorites = favorites
+        self.members = members
         self.background = background
-        self.imageURL = imageURL
+        # self.imageURL = imageURL
     
     def __str__(self):
-        return "Title: {} (Type: {}, Genre: {} , Aired From: {}, Rating From Users: {})".format(self.getTitle, self.getType, self.genre, self.getAiredFrom, self.getRating)  
+        return "Type: {}, Genre: {}, Aired From: {}, Score From Users: {}, Rank: {}".format(self.getType(), self.genre, self.getAiredFrom(), self.getScore(), self.getRank())  
 
     def getTitle(self):
         return self.title 
@@ -50,10 +52,21 @@ class Anime:
     
     def getScoredBy(self):
         return self.scoredBy
+    
+    def getRank(self):
+        return self.rank
 
     def getPopularity(self):
         return self.popularity
     
+    def getMembers(self):
+        return self.members
+
     def getFavorites(self):
         return self.favorites
     
+    def getBackground(self):
+        return self.background
+    
+    # def getImageURL(self):
+    #     return self.imageURL
