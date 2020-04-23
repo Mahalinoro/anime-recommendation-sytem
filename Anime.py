@@ -1,5 +1,7 @@
-class Anime:
-    def __init__(self, title, type, genre, episodeNumber, episodeDuration, airedFrom, airing, rating, score, scoredBy, rank, popularity, members, favorites, background):
+from Animeclass import *
+
+class animes:
+    def __init__(self, title, type, genre, episodeNumber, episodeDuration, airedFrom, airing, rating, score, scoredBy, rank, popularity, members, favorites, background,name):
         self.title = title
         self.type = type
         self.genre = genre
@@ -16,57 +18,64 @@ class Anime:
         self.members = members
         self.background = background
         # self.imageURL = imageURL
-    
-    def __str__(self):
-        return "Type: {}, Genre: {}, Aired From: {}, Score From Users: {}, Rank: {}".format(self.getType(), self.genre, self.getAiredFrom(), self.getScore(), self.getRank())  
+        self.name = name
 
-    def getTitle(self):
-        return self.title 
-    
-    def getType(self):
-        return self.type
-    
-    def getGenre(self):
-        genres = self.genre.split(", ")
-        return genres
-    
-    def getEpisodeNumber(self):
-        return self.episodeNumber
-    
-    def getEpisodeDuration(self):
-        return self.episodeDuration
-    
-    def getAiredFrom(self):
-        return self.airedFrom
-    
-    def getAiringStatus(self):
-        if self.airing == "TRUE":
-            return True        
-        return False
+    def getTitle(self ,title):
+        dict = Anime.animeobject("slef" ,title)
+        return dict['Title']
 
-    def getRating(self):
-        return self.rating
-    
-    def getScore(self):
-        return self.score
-    
-    def getScoredBy(self):
-        return self.scoredBy
-    
-    def getRank(self):
-        return self.rank
+    def getType(self, title):
+        dict = Anime.animeobject("slef", title)
+        print(dict['Type'])
+        return dict['Type']
 
-    def getPopularity(self):
-        return self.popularity
-    
-    def getMembers(self):
-        return self.members
 
-    def getFavorites(self):
-        return self.favorites
-    
-    def getBackground(self):
+    def getGenre(self, title):
+        dict = Anime.animeobject("slef" ,title)
+        print(dict['Genre'])
+        return dict['Genre']
+
+    def getEpisodeNumber(self , title):
+        dict = Anime.animeobject("slef" ,title)
+        return dict['Episode Number']
+
+    def getEpisodeDuration(self , title):
+        dict = Anime.animeobject("slef" ,title)
+
+    def getAiredFrom(self , title):
+        dict = Anime.animeobject("slef" ,title)
+        return dict['Aired_from_year']
+
+    def getAiringStatus(self, title):
+        dict = Anime.animeobject("slef" ,title)
+        return dict['Airing']
+
+
+    def getScore(self, title):
+        dict = Anime.animeobject("slef" ,title)
+        print( dict['Score'])
+        return dict['Score']
+
+    def getScoredBy(self, title):
+        dict = Anime.animeobject("slef", title)
+        return dict['Scored_by']
+
+    def getRank(self, title):
+        dict = Anime.animeobject("slef" ,title)
+        return dict['Rank']
+
+    def getPopularity(self, title):
+        dict = Anime.animeobject("slef" ,title)
+        return dict['Popularity']
+
+    def getMembers(self, title):
+        dict = Anime.animeobject("slef" ,title)
+        return dict['Members']
+
+    def getFavorites(self, title):
+        dict = Anime.animeobject("slef" ,title)
+        return dict['Favorites']
+
+    def getBackground(self, title):
         return self.background
-    
-    # def getImageURL(self):
-    #     return self.imageURL
+
