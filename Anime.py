@@ -41,8 +41,8 @@ class Anime:
     
     def getAiringStatus(self):
         if self.airing == "TRUE":
-            return True        
-        return False
+            return 'yes'        
+        return 'no'
 
     def getRating(self):
         return self.rating

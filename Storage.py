@@ -30,6 +30,16 @@ class Storage:
             self.storage.pop(title)
             self.size -= 1
 
+    # Search method return all the possible string that matches the title needed to be found
+    # Time Complexity => O(n)
+    # Space Complexity => O(n) 
     def search(self, toFind):
-        return [anime.getTitle() for anime in self.storage.keys() if toFind in anime.getTitle()]
+        matches = [anime for anime in self.storage.keys() if toFind in anime]
+        if matches == []:
+            print('Anime not found')
+        else:
+            count = 1
+            for match in matches:
+                print('{}. {}'.format(count, match))
+                count += 1
 
