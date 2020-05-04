@@ -1,0 +1,27 @@
+{
+    "Mahaly": {
+        "username": "Mahaly",
+        "password": "5a6747f517fd2aeeab1a786161bad772f390fee7d665ec9e5a34887577abf7877d66697ceebe18c9b4c9b4abf46780c40026dc8d8f61930b4188037a27b0b506c5298a21a91dec6c1a940b3f96814cd805f7f8bd54e8d730665ce11c307e25cb",
+        "watched_list": [
+            "Shingeki no Kyojin",
+            "Tokyo Ghoul",
+            "Naruto",
+            "Ao no Exorcist"
+        ]
+    },
+    "Kelvin": {
+        "username": "Kelvin",
+        "password": "7b5e4c27e607e81c43f4c6b45e243a3debd29000f503bb410da988687165960bb1d93efb07db5a2562b08cc5a6a047847660f0313a83fb04703b975a6bfb8568c673debf603a44df536bfb79d176b02363d258f5786539f40a4429e01caaa5df",
+        "watched_list": [
+            "Noragami",
+            "Fullmetal Alchemist",
+            "Akame ga Kill!",
+            "Clannad"
+        ]
+    },
+    "Aina": {
+        "username": "Aina",
+        "password": "ed77c9ba549e3127e86e7a3f0c9a2533973f3f6f6ec32b2d6e6164733451ad3e55098f8c3c6f4d3d4361bd80e6db19fc4083b1ed6169e96702c60c2298b3478d7268d278d19aefc6d80d2f839bed76efa25dd0d979f1661e967c33ed5e6daeae",
+        "watched_list": []
+    }
+}
