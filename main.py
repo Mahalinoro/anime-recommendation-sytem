@@ -88,7 +88,7 @@ def signup(users):
     username = input("Enter new username: ")
     password = input("Enter new password: ")
     animelist = input("Enter anime you already watched [e.g: a, b, c, ...]: ")
-    animelist = animelist.split(',')
+    animelist = animelist.split(', ')
 
     users.addUser(username, password, animelist)
     print("\n\t*************************************************")
