@@ -19,19 +19,20 @@ class Recommender:
                 row['duration_min'], row['aired_from_year'], row['airing'], row['rating'], row['score'], 
                 row['scored_by'], row['rank'], row['popularity'], row['members'], row['favorites'], row['background'])    
             return storage
-
+    
     # This method filter the data then sort it with the maximum paramaters
     # Time Complexity => O(n log n)
     # Space Complexity => O(n)
-    def generateListBasedHighestParam(self, data, type, genre, airedFrom):
+    def generateListBasedHighestParam(self, data, userlist, type, genre, airedFrom):
         # Filter data by 1:type, 2:genre and 3:airedFrom
         filtered_data = []
         for title, anime in data.storage.items():
-            if anime.getType() == type:
-                if genre in anime.getGenre(): 
-                    if anime.getAiredFrom() >= str(airedFrom):
-                        if anime != None:
-                            filtered_data.append(anime)
+            if title not in userlist:
+                if anime.getType() == type:
+                    if genre in anime.getGenre(): 
+                        if anime.getAiredFrom() >= str(airedFrom):
+                            if anime != None:
+                                filtered_data.append(anime)
 
         # Check if filterd_data not empty:
         # Sort data by 1:score, 2:popularity, 3:members, 4:favorites 
@@ -63,7 +64,7 @@ class Recommender:
     # This method filter the data then sort it with the average score
     # Time Complexity => O(n)
     # Space Complexity => O(n)
-    def generateListBasedAverageParam(self, data, type, genre, airedFrom): 
+    def generateListBasedAverageParam(self, data, userlist, type, genre, airedFrom): 
         # Mean within the data based on  score, popularity, members, favorites
         mean_score = mean([anime.getScore() for title, anime in data.storage.items()])
         # mean_popularity = mean([anime.getPopularity() for title, anime in data.storage.items()])
@@ -74,12 +75,13 @@ class Recommender:
         # Filter data by mean parameters
         filtered_data = []
         for title, anime in data.storage.items():
-            if anime.getType() == type:
-                if genre in anime.getGenre(): 
-                    if anime.getAiredFrom() >= str(airedFrom):
-                        if mean_score - 1 <= anime.getScore() <= mean_score + 1:
-                            if anime != None:                    
-                                    filtered_data.append(anime)            
+            if title not in userlist:
+                if anime.getType() == type:
+                    if genre in anime.getGenre(): 
+                        if anime.getAiredFrom() >= str(airedFrom):
+                            if mean_score - 1 <= anime.getScore() <= mean_score + 1:
+                                if anime != None:                    
+                                        filtered_data.append(anime)            
 
         if filtered_data != []:
             if len(filtered_data) < 10:
@@ -101,15 +103,16 @@ class Recommender:
     # This method filter the data then sort it with the minimum paramaters
     # Time Complexity => O(n log n)
     # Space Complexity => O(n)
-    def generateListBasedLowestParam(self, data, type, genre, airedFrom): 
+    def generateListBasedLowestParam(self, data, userlist, type, genre, airedFrom): 
         # Filter data by 1:type, 2:genre and 3:airedFrom
         filtered_data = []
         for title, anime in data.storage.items():
-            if anime.getType() == type:
-                if genre in anime.getGenre(): 
-                    if anime.getAiredFrom() >= str(airedFrom):
-                        if anime != None:
-                            filtered_data.append(anime)
+            if title not in userlist:
+                if anime.getType() == type:
+                    if genre in anime.getGenre(): 
+                        if anime.getAiredFrom() >= str(airedFrom):
+                            if anime != None:
+                                filtered_data.append(anime)
         
         if filtered_data != []:
             # Sort data by 1:score, 2:popularity, 3:members, 4:favorites
@@ -138,8 +141,8 @@ class Recommender:
     # This method generate list based on random parameters
     # Time Complexity => O(n)
     # Space Complexity => O(n)
-    def generateListBasedRandom(self, data): 
-        s = [anime for anime in data.storage.values()]
+    def generateListBasedRandom(self, data, userlist): 
+        s = [anime for anime in data.storage.values() if anime not in userlist]
         
         count = 1
         for i in range(0, 10):
