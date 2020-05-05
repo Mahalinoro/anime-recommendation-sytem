@@ -90,13 +90,18 @@ def signup(users):
     animelist = input("Enter anime you already watched [e.g: a, b, c, ...]: ")
     animelist = animelist.split(', ')
 
-    users.addUser(username, password, animelist)
-    print("\n\t*************************************************")
-    print("\t****          Signed Up Successfully!        ****")
-    print("\t*************************************************")
-    users.save()
-    users.load
-    signin(users)
+    if username not in users.user_storage.keys():
+        users.addUser(username, password, animelist)
+        print("\n\t*************************************************")
+        print("\t****          Signed Up Successfully!        ****")
+        print("\t*************************************************")
+        users.save()
+        users.load
+        signin(users)
+    else:
+        print("Username already taken, Try Again!")
+        signup(users)
+
 
 def main_menu(username, recommender, scraper, data, airing_animes, upcoming_animes):
     display_title_bar()

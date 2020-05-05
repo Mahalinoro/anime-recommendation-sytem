@@ -1,5 +1,5 @@
-from Storage import Storage
-from Anime import Anime
+import Storage as Storage
+import Anime as Anime
 from operator import itemgetter, attrgetter
 from statistics import mean
 
@@ -12,7 +12,7 @@ class Recommender:
     # Time Complexity => O(n)
     # Space Complexity => O(n)
     def parseData(self, storage, filename):
-        with open(filename, newline='') as csvfile:
+        with open(filename, newline='', encoding='utf-8', errors='ignore') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 storage.add(row['title'], row['type'], row['genre'], row['episodes'], 

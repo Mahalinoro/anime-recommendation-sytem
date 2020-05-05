@@ -18,7 +18,7 @@ class Storage:
 
     def get(self, title):
         if self.contains(title):
-            return self.storage[title]
+            return self.storage[title].title
         return "Not Found"
 
     def add(self, title, type, genre, episodeNumber, episodeDuration, airedFrom, airing, rating, score, scoredBy, rank, popularity, members,favorites, background):

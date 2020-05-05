@@ -7,7 +7,7 @@ class User:
     def __init__(self, username, password, watched_list=[]):
         self.username = username
         self.password = password
-        self.watched_list = []
+        self.watched_list = watched_list
     
     def getUsername(self):
         return self.username
@@ -31,20 +31,21 @@ class UserStorage:
     
     def removeUser(self, username):
         if username in self.user_storage.keys():
-            self.storage.pop(username)
+            self.user_storage.pop(username)
             self.size -= 1
 
     def addToWatchedList(self, username, anime):
         self.user_storage[username].getWatchedList().append(anime)
     
     def save(self):
+        """Convert the dictionary into json and save it to userCollection.json"""
         with open('userCollection.json', 'w') as fp:
             json.dump(self.user_storage, fp, indent=4)
 
     def load(self):
         """Time Complexity => O(n)"""
         """Space Complexity => O(n)"""
-        with open('userCollection.json', 'r') as f:
+        with open('userCollection.json', 'rb') as f:
             self.user_storage = json.load(f)
 
 
