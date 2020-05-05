@@ -1,5 +1,5 @@
-import Storage as Storage
-import Anime as Anime
+from Storage import Storage
+from Anime import Anime
 from operator import itemgetter, attrgetter
 from statistics import mean
 
@@ -38,23 +38,23 @@ class Recommender:
         # Sort data by 1:score, 2:popularity, 3:members, 4:favorites 
         if filtered_data != []:
             # Sort data by 1:score, 2:popularity, 3:members, 4:favorites
-            s = sorted(filtered_data, key=attrgetter('score'))
-            sorted(s, key=attrgetter('popularity'), reverse=True)
-            sorted(s, key=attrgetter('members'))
-            sorted(s, key=attrgetter('favorites'))
+            filtered_data.sort(key=attrgetter('score'), reverse=True)
+            sorted(filtered_data, key=attrgetter('popularity'))
+            sorted(filtered_data, key=attrgetter('members'), reverse=True)
+            sorted(filtered_data, key=attrgetter('favorites'), reverse=True)
             
             # Generate Top 10
             if len(filtered_data) < 10:
                 count = 1
                 for i in range(0, len(filtered_data)):
                     print("{}. Title: {} - Genre: {} - Aired From: {} - Score: {}/10".format(count, 
-                    s[i].getTitle(), s[i].genre, s[i].getAiredFrom(), s[i].getScore()))
+                    filtered_data[i].getTitle(), filtered_data[i].genre, filtered_data[i].getAiredFrom(), filtered_data[i].getScore()))
                     count += 1 
             else:
                 count = 1
                 for i in range(0, 10):
                     print("{}. Title: {} - Genre: {} - Aired From: {} - Score: {}/10".format(count, 
-                    s[i].getTitle(), s[i].genre, s[i].getAiredFrom(), s[i].getScore()))
+                    filtered_data[i].getTitle(), filtered_data[i].genre, filtered_data[i].getAiredFrom(), filtered_data[i].getScore()))
                     count += 1 
             
         else:
@@ -116,23 +116,23 @@ class Recommender:
         
         if filtered_data != []:
             # Sort data by 1:score, 2:popularity, 3:members, 4:favorites
-            s = sorted(filtered_data, key=attrgetter('score'))
-            sorted(s, key=attrgetter('popularity'), reverse=True)
-            sorted(s, key=attrgetter('members'))
-            sorted(s, key=attrgetter('favorites'))
+            filtered_data.sort(key=attrgetter('score'))
+            sorted(filtered_data, key=attrgetter('popularity'), reverse=True)
+            sorted(filtered_data, key=attrgetter('members'))
+            sorted(filtered_data, key=attrgetter('favorites'))
             
             # Generate Top 10
             if len(filtered_data) < 10:
                 count = 1
                 for i in range(0, len(filtered_data)):
                     print("{}. Title: {} - Genre: {} - Aired From: {} - Score: {}/10".format(count, 
-                    s[i].getTitle(), s[i].genre, s[i].getAiredFrom(), s[i].getScore()))
+                    filtered_data[i].getTitle(), filtered_data[i].genre, filtered_data[i].getAiredFrom(), filtered_data[i].getScore()))
                     count += 1 
             else:
                 count = 1
                 for i in range(0, 10):
                     print("{}. Title: {} - Genre: {} - Aired From: {} - Score: {}/10".format(count, 
-                    s[i].getTitle(), s[i].genre, s[i].getAiredFrom(), s[i].getScore()))
+                    filtered_data[i].getTitle(), filtered_data[i].genre, filtered_data[i].getAiredFrom(), filtered_data[i].getScore()))
                     count += 1 
             
         else:
@@ -150,5 +150,6 @@ class Recommender:
             print("{}.  Title: {} - Genre: {} - Aired From: {} - Score: {}/10".format(count, 
             n.getTitle(), n.genre, n.getAiredFrom(), n.getScore()))
             count += 1
+
 
 
