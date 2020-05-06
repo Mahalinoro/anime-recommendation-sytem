@@ -9,7 +9,6 @@ import os
 import random
 import time
 
-
 def display_title_bar():
     """ Clears the terminal screen, and displays a title bar """
     os.system('clear')
@@ -67,39 +66,61 @@ def authentication_screen():
     return input("\n[?] Press any key to continue: ") 
 
 def signin(users):
+    os.system('clear')
+    display_title_bar()
+    
     username = input("Enter username: ")
     password = input("Enter password: ")
 
     # Check if username in collection
     # Check username's password for verification
-    if username in users.user_storage.keys():
-        if verify_password(users.user_storage[username]['password'], password):
-            time.sleep(1)
-            print("\n\t*************************************************")
-            print("\t****          Signed In Successfully!        ****")
-            print("\t*************************************************")
-            time.sleep(1)
-            main_menu(username, recommender, scraper, data, airing_animes, upcoming_animes)
+    if username != '' or password != '':
+        if username in users.user_storage.keys():
+            if verify_password(users.user_storage[username]['password'], password):
+                time.sleep(1)
+                print("\n\t*************************************************")
+                print("\t****          Signed In Successfully!        ****")
+                print("\t*************************************************")
+                time.sleep(1)
+                main_menu(username, recommender, scraper, data, airing_animes, upcoming_animes)
+            else:
+                print("** Wrong Password, Try Again! **")
+                time.sleep(1)
+                signin(users)
         else:
-            print("Wrong Password, Try Again!")
+            print('** Invalid Username | Invalid Password, Try Again! **')
+            time.sleep(1)
             signin(users)
+    else:
+        print('** Username | Password should not be empty, Try Again! **')
+        time.sleep(1)
+        signin(users)
 
 def signup(users):
+    os.system('clear')
+    display_title_bar()
+
     username = input("Enter new username: ")
     password = input("Enter new password: ")
     animelist = input("Enter anime you already watched [e.g: a, b, c, ...]: ")
     animelist = animelist.split(', ')
 
-    if username not in users.user_storage.keys():
-        users.addUser(username, password, animelist)
-        print("\n\t*************************************************")
-        print("\t****          Signed Up Successfully!        ****")
-        print("\t*************************************************")
-        users.save()
-        users.load
-        signin(users)
+    if username != '' or password != '':
+        if username not in users.user_storage.keys():
+            users.addUser(username, password, animelist)
+            print("\n\t*************************************************")
+            print("\t****          Signed Up Successfully!        ****")
+            print("\t*************************************************")
+            users.save()
+            users.load
+            signin(users)
+        else:
+            print("** Username already taken, Try Again! **")
+            time.sleep(1)
+            signup(users)
     else:
-        print("Username already taken, Try Again!")
+        # print("** Username | Password | Anime list should not be empty, Try Again! **")
+        time.sleep(1)
         signup(users)
 
 
