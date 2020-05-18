@@ -2,9 +2,8 @@
 
 ## How To Run
 1. Make sure you have the latest version of Python installed in your system
-2. Go to main folder and set up a virtual environment:
+2. Set up a virtual environment:
 ```shell
-cd main/
 python3 -m venv <any-name>
 source <any-name>/bin/activate
 ```
